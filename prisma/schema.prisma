@@ -1,0 +1,80 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Medicine {
+  id            Int      @id @default(autoincrement())
+  name          String
+  supplier      String?
+  costPrice     Float
+  sellingPrice  Float
+  stock         Int
+
+  active Boolean @default(true)
+
+  lastUpdatedBy String?
+  lastUpdatedAt DateTime?
+
+  saleItems SaleItem[]
+}
+
+model Sale {
+  id Int @id @default(autoincrement())
+
+  billNo Int @unique
+
+  totalAmount Float
+  totalProfit Float @default(0)
+
+  staffName String?
+
+  isCancelled Boolean @default(false)
+
+  createdAt DateTime @default(now())
+
+  items SaleItem[]
+}
+
+model SaleItem {
+  id Int @id @default(autoincrement())
+
+  saleId Int
+  sale Sale @relation(fields: [saleId], references: [id])
+
+  medicineId Int
+  medicine Medicine @relation(fields: [medicineId], references: [id])
+
+  quantity Int
+
+  sellingPrice Float
+  costPrice Float
+
+  discount Float @default(0)
+  finalAmount Float?
+
+  profit Float
+}
+
+model Empolyees {
+  id Int @id @unique @default(autoincrement())
+  name String
+  position String
+  password String
+}
+
+model Owner {
+  userid String @unique
+  date DateTime @default(now())
+  status Boolean @default(false)
+  apidate DateTime
+}
+
+model PageCache {
+  id        String   @id @default(cuid())
+  pageData  Json     // Stores the full layout JSON structure
+  updatedAt DateTime @updatedAt
+}

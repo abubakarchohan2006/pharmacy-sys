@@ -1,0 +1,38 @@
+{
+  "name": "hospitalweb",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "electron": "electron electron/main.js",
+    "electron-dev": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && npm run electron\"",
+    "electron-start": "cross-env NODE_ENV=production electron electron/main.js",
+    "dist": "npm run build && electron-builder",
+    "pack": "electron-builder --dir"
+  },
+  "dependencies": {
+    "@prisma/adapter-better-sqlite3": "^7.9.1",
+    "@prisma/client": "^7.9.1",
+    "concurrently": "^10.0.4",
+    "delay": "^7.0.0",
+    "lucide-react": "^1.31.0",
+    "mongoose": "^9.3.3",
+    "next": "16.2.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "wait-on": "^9.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "cross-env": "^10.1.0",
+    "electron": "^43.2.0",
+    "electron-builder": "^26.15.3",
+    "electron-is-dev": "^3.0.1",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.1",
+    "prisma": "^7.9.1",
+    "tailwindcss": "^4"
+  }
+}

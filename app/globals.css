@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@media print {
+  @page {
+    size: 80mm auto; /* ✅ key line (receipt width) */
+    margin: 0;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #print-area, #print-area * {
+    visibility: visible;
+  }
+
+  #print-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80mm;   /* ✅ exact receipt width */
+    padding: 8px;
+    font-size: 12px;
+  }
+}
