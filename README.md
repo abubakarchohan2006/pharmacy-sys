@@ -251,7 +251,7 @@ pharmacy-management-system
 ## 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/pharmacy-management-system.git
+git clone https://github.com/abubakarchohan2006/pharmacy-sys.git
 ```
 
 ```bash
